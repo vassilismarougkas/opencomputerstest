@@ -5,7 +5,8 @@ local files = {
     ["/data/version.lua"] = "/version.lua",
     ["/etc/motd"] = "/etc/motd.lua",
     ["/bin/info.lua"] = "/programs/info.lua",
-    ["/lib/formatter.lua"] = "/libs/formatter.lua"
+    ["/lib/formatter.lua"] = "/libs/formatter.lua",
+    ["/bin/transfer.lua"] = "/programs/transfer.lua"
 }
 
 
