@@ -35,7 +35,7 @@ end
 download("/temp/version.lua", "/version.lua")
 local newversion = require("/temp/version")
 
-if newversion.getVersion <= version then
+if newversion.getVersion() <= version then
     print("You already have the latest version. No need to update.")
     print("Rebooting...")
     os.sleep(1)
