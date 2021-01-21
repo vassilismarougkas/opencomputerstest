@@ -32,6 +32,9 @@ if (isValid) then
     version = currentversion.getVersion()
 end
 
+if not filesystem.exists("/temp") then
+    filesystem.makeDirectory("/temp")
+end
 download("/temp/version.lua", "/version.lua")
 local newversion = require("/temp/version")
 
