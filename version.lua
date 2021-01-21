@@ -1,8 +1,9 @@
-local version = 1
+local version = 1.1
 
 local files = {
     ["/bin/update.lua"] = "/update.lua",
-    ["/data/version.lua"] = "/version.lua"
+    ["/data/version.lua"] = "/version.lua",
+    ["/etc/motd"] = "/etc/motd.lua"
 }
 
 
