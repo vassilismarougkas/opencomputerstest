@@ -80,5 +80,5 @@ for path, link in pairs(newversion.getFiles()) do
 end
 
 print("Rebooting...")
-os.sleep(1)
+os.sleep(0.5)
 computer.shutdown(true)
