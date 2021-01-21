@@ -3,7 +3,6 @@ local term = require("term")
 local shell = require("shell")
 
 local component = require("component")
-local data = component.data
 
 local function termClear()
   term.clear()
@@ -68,103 +67,6 @@ local function CopyFolder()
   return nil
 end
 
-local function sendFile()
-  termClear()
-  term.write("Transfer Settings")
-  local settings = {
-      [1] = {name = "File Location: "}, 
-      [2] = {name = "pair key: "}, 
-      [3] = {name = "use encryption (requires encryption cards): "},
-      [4] = {name = "encryption key (ignored if no encryption)"},
-  size = 4}
-  for i = 1,settings.size do
-      term.setCursor(1,i+1)
-      term.write(settings[i].name)
-      settings[i].x, settings[i].y = term.getCursor()
-  end
-  for i = 1,settings.size do
-      term.setCursor(settings[i].x, settings[i].y)
-      settings[i].value = io.read()
-  end
-
-  termClear()
-  term.write("Waiting for pair...")
-  
-
-  if (settings[3].value == "true") then
-       
-  end
-
-end
-
-local function receiveFile()
-  termClear()
-  term.write("Transfer Settings")
-  local settings = {
-      [1] = {name = "Save Location: "}, 
-      [2] = {name = "pair key: "}, 
-      [3] = {name = "use encryption (requires encryption cards): "},
-      [4] = {name = "encryption key (ignored if no encryption)"},
-      size = 4}
-  for i = 1,settings.size do
-      term.setCursor(1,i+1)
-      term.write(settings[i].name)
-      settings[i].x, settings[i].y = term.getCursor()
-  end
-  for i = 1,settings.size do
-      term.setCursor(settings[i].x, settings[i].y)
-      settings[i].value = io.read()
-  end
-  
-  termClear()
-  term.write("Waiting for pair...")
-
-  
-end
-
-local function sendFolder()
-
-end
-
-local function receiveFolder()
-
-end
-
-local function NetworkTransfer()
-
-  termClear()
-  term.write("Transfer Type: ")
-  local x,y = term.getCursor()
-  nextLine()
-  term.write("1. Send File")
-  nextLine()
-  term.write("2. Receive File")
-  nextLine()
-  term.write("3. Send Folder")
-  nextLine()
-  term.write("4. Receive Folder")
-
-  term.setCursor(x,y)
-
-  local choice = tonumber(io.read())
-
-  if (choice > 4 or choice < 1) then
-      return nil
-  end
-
-  if (choice == 1) then
-      sendFile()
-  elseif (choice == 2) then
-      receiveFile()
-  elseif (choice == 3) then
-      sendFolder()
-  elseif (choice == 4) then
-      receiveFolder()
-  end
-
-  return nil
-end
-
 local function interface()
 
     termClear()
@@ -174,8 +76,6 @@ local function interface()
     term.write("1. Clone Drive")
     term.setCursor(1,3)
     term.write("2. Copy Folder")
-    term.setCursor(1,4)
-    term.write("3. Network Transfer")
 
     term.setCursor(x,y)
     local choice = tonumber(io.read())
@@ -189,13 +89,9 @@ local function interface()
         CloneDrive()
     elseif (choice == 2) then
         CopyFolder()
-    elseif (choice == 3) then
-        NetworkTransfer()
     end
     return nil
 
 end
-
-
 
 interface()
