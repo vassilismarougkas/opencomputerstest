@@ -14,7 +14,7 @@ local function download(dpath, gpath)
     shell.execute("wget -q -f "..mainpath..gpath.." "..dpath)
 end
 
-
+shell.setWorkingDirectory("/")
 termClear()
 local isValid = true
 if not filesystem.exists("/data") then
