@@ -1,7 +1,10 @@
+local rArgs = {...}
 local term = require("term")
 local shell = require("shell")
 local computer = require("computer")
 local filesystem = require("filesystem")
+
+local argument_force = false
 
 local mainpath = "https://raw.githubusercontent.com/vassilismarougkas/opencomputerstest/master"
 
@@ -10,9 +13,25 @@ local function termClear()
     term.setCursor(1,1)
 end
 
+local function printUsage()
+    termClear()
+    print("Usage: ")
+    print("update [-f]")
+end
+
 local function download(dpath, gpath)
     shell.execute("wget -q -f "..mainpath..gpath.." "..dpath)
 end
+
+for key, value in pairs(rArgs) do
+    if (value == "-f") then
+        argument_force = true
+    else
+        printUsage()
+        return nil
+    end
+end
+    
 
 shell.setWorkingDirectory("/")
 termClear()
@@ -38,11 +57,13 @@ end
 download("/temp/version.lua", "/version.lua")
 local newversion = require("/temp/version")
 
-if newversion.getVersion() <= version then
-    print("You already have the latest version. No need to update.")
-    print("Rebooting...")
-    os.sleep(1)
-    computer.shutdown(true)
+if not argument_force then
+    if newversion.getVersion() <= version then
+        print("You already have the latest version. No need to update.")
+        print("Rebooting...")
+        os.sleep(1)
+        computer.shutdown(true)
+    end
 end
 
 if version > 0 then
