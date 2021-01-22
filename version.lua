@@ -11,7 +11,10 @@ local files = {
 
 local extendedfiles = {
     ["/bin/transfer.lua"] = "/programs/transfer.lua",
-    ["/bin/tar.lua"] = "/programs/tar.lua"
+    ["/bin/tar.lua"] = "/programs/tar.lua",
+    ["/bin/oppm.lua"] = "/apt/programs/oppm/oppm.cfg",
+    ["/etc/oppm.cfg"] = "/apt/programs/oppm/oppm.cfg",
+    ["/etc/opdata.svd"] = "/apt/programs/oppm/opdata.svd"
 }
 
 
