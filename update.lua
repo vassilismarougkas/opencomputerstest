@@ -17,7 +17,7 @@ local function printUsage()
     termClear()
     print("Usage: ")
     print("update [-f]")
-    print("-f -> Force update, even on the latest version.")
+    print("[-f] Force update, even on the latest version.")
 end
 
 local function download(dpath, gpath)
