@@ -1,4 +1,4 @@
-local version = 3.4
+local version = 4
 
 local files = {
     ["/bin/update.lua"] = "/update.lua",
@@ -6,6 +6,10 @@ local files = {
     ["/etc/motd"] = "/etc/motd.lua",
     ["/bin/info.lua"] = "/programs/info.lua",
     ["/lib/formatter.lua"] = "/libs/formatter.lua",
+    ["/bin/apt.lua"] = "/programs/apt.lua"
+}
+
+local extendedfiles = {
     ["/bin/transfer.lua"] = "/programs/transfer.lua",
     ["/bin/tar.lua"] = "/programs/tar.lua"
 }
@@ -22,6 +26,11 @@ local function getFiles()
     return files
 end
 
+local function getExtendedFiles()
+    return extendedfiles
+end
+
+var.getExtendedFiles = getExtendedFiles
 var.getVersion = getVersion
 var.getFiles = getFiles
 

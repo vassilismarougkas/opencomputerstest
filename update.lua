@@ -5,6 +5,7 @@ local computer = require("computer")
 local filesystem = require("filesystem")
 
 local argument_force = false
+local argument_extended = false
 
 local mainpath = "https://raw.githubusercontent.com/vassilismarougkas/opencomputerstest/master"
 
@@ -16,8 +17,9 @@ end
 local function printUsage()
     termClear()
     print("Usage: ")
-    print("update [-f]")
+    print("update [-f] [-e]")
     print("[-f] Force update, even on the latest version.")
+    print("[-e] Extended download. Will install programs like tar archive...")
 end
 
 local function download(dpath, gpath)
@@ -27,6 +29,8 @@ end
 for key, value in pairs(rArgs) do
     if (value == "-f") then
         argument_force = true
+    elseif (value == "-e") then
+        argument_extended = true
     else
         printUsage()
         return nil
@@ -72,12 +76,25 @@ if version > 0 then
     for path, link in pairs (currentversion.getFiles()) do
         filesystem.remove(path)
     end
+
+    if argument_extended then
+        for path, link in pairs (currentversion.getExtendedFiles()) do
+            filesystem.remove(path)
+        end
+    end
 end
 
 print("Downloading new Files")
 for path, link in pairs(newversion.getFiles()) do
     download(path, link)
 end
+
+if argument_extended then
+    for path, link in pairs(newversion.getExtendedFiles()) do
+        download(path, link)
+    end
+end
+
 
 print("Rebooting...")
 os.sleep(0.5)
