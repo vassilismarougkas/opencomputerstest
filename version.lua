@@ -1,4 +1,4 @@
-local version = 4
+local version = 4.1
 
 local files = {
     ["/bin/update.lua"] = "/update.lua",
