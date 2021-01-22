@@ -17,7 +17,7 @@ local function getList()
     repeat 
         str = "list"..x
         x = x + 1
-    until filesystem.exists("/temp/"..str..".lua")
+    until not filesystem.exists("/temp/"..str..".lua")
     download("/temp/"..str..".lua", "/apt/list.lua")
     return require("/temp/"..str)
 end
