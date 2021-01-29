@@ -48,7 +48,7 @@ local function printUsage()
 end
 
 local function update()
-    shell.setWorkingDirectory()
+    shell.setWorkingDirectory("/")
     --if filesystem.exists("/data/apt/list.lua") then
     --    filesystem.remove("/data/apt/list.lua")
     --end
