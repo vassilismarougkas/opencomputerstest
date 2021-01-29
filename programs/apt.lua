@@ -5,7 +5,9 @@ local shell = require("shell")
 local filesystem = require("filesystem")
 local term = require("term")
 
-local special = false
+if not filesystem.exists("/data/apt") then
+    filesystem.makeDirectory("/data/apt")
+end
 
 local function download(dpath, gpath)
     shell.execute("wget -q -f "..mainpath..gpath.." "..dpath)
