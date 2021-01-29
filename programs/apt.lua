@@ -62,7 +62,7 @@ local function printList()
     print("Available Programs: ")
     for key, tab in pairs(list) do 
         local bool = tab["hide"] or false
-        if bool then
+        if not bool then
             print(key)
         end
     end
@@ -86,8 +86,10 @@ if #tArgs == 1 then
         update()
         return nil
     end
-    printUsage()
-    return nil
+    if (tArgs[1] ~= "upgrade") then
+        printUsage()
+        return nil
+    end
 end
 
 local list = getList()
@@ -116,6 +118,20 @@ local function downloadApt(package, tab)
     end
     
     return true
+end
+
+local function upgrade()
+    for name, version in pairs(installed_list) do
+        local ver = list[name]["version"] or 1.0
+        if ver > version then
+            downloadApt(name, list[name])
+        end
+    end
+end
+
+if (#tArgs == 1 and tArgs[1] == "upgrade") then
+    upgrade()
+    return nil
 end
 
 if tArgs[1] == "install" then
