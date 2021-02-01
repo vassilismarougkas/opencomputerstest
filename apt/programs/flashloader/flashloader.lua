@@ -53,8 +53,8 @@ if (#tArgs == 2) then
         return nil
     end
     if (tArgs[1] == "flash") then
-        if not filesystem.exists("flash -q /data/flash/"..tArgs[2]) then
-            download("/data/flash/"..tArgs[2], "/apt/programs/flashloader/flashes/"..tArgs[2])
+        if not filesystem.exists("/data/flash/"..tArgs[2]) then
+            download("/data/flash/"..tArgs[2], "/apt/programs/flashloader/flashes/"..tArgs[2]..".lua")
         end
         shell.execute("flash -q /data/flash/"..tArgs[2].." "..tArgs[2])
         return nil
@@ -64,8 +64,8 @@ end
 
 if (#tArgs == 3) then
     if (tArgs[1] == "flash") then
-        if not filesystem.exists("flash -q /data/flash/"..tArgs[2]) then
-            download("/data/flash/"..tArgs[2], "/apt/programs/flashloader/flashes/")
+        if not filesystem.exists("/data/flash/"..tArgs[2]) then
+            download("/data/flash/"..tArgs[2], "/apt/programs/flashloader/flashes/"..tArgs[2]..".lua")
         end
         shell.execute("flash -q /data/flash/"..tArgs[2].." "..tArgs[3])
         return nil
