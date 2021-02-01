@@ -1,4 +1,4 @@
-local version = 5.1
+local version = 5.2
 
 local files = {
     ["/bin/update.lua"] = "/update.lua",
@@ -6,7 +6,8 @@ local files = {
     ["/etc/motd"] = "/etc/motd.lua",
     ["/bin/info.lua"] = "/programs/info.lua",
     ["/lib/formatter.lua"] = "/libs/formatter.lua",
-    ["/bin/apt.lua"] = "/programs/apt.lua"
+    ["/bin/apt.lua"] = "/programs/apt.lua",
+    ["/bin/properties.lua"] = "/programs/properties.lua"
 }
 
 local extendedfiles = {
