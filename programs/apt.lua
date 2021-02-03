@@ -127,6 +127,7 @@ local function upgrade()
         local ver = list[name]["version"] or 1.0
         if ver > version then
             downloadApt(name, list[name])
+            saveInstalled(installed_list)
         end
     end
 end
