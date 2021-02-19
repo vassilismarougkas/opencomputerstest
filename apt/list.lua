@@ -1,6 +1,6 @@
 return {
     ["tar"] = {["location"] = "/programs/tar.lua", ["save"] = "/bin/", ["name"] = "tar.lua",},
-    ["transfer"] = {["location"] = "/programs/transfer.lua", ["save"] = "/bin/", ["name"] = "transfer.lua",},
+    ["transfer"] = {["location"] = "/programs/transfer.lua", ["save"] = "/bin/", ["name"] = "transfer.lua",["version"] = 1.1},
     ["oppm"] = {["location"] = "/apt/programs/oppm/oppm.lua", ["save"] = "/bin/", ["name"] = "oppm.lua", ["dependencies"] = {"oppm_config", "oppm_opdata"}},
     ["oppm_config"] = {["location"] = "/apt/programs/oppm/oppm.cfg", ["save"] = "/etc/", ["name"] = "oppm.cfg", ["hide"] = true},
     ["oppm_opdata"] = {["location"] = "/apt/programs/oppm/opdata.svd", ["save"] = "/etc/", ["name"] = "opdata.svd", ["hide"] = true},

@@ -25,8 +25,9 @@ end
 
 local function CloneDrive()
   termClear()
-  term.write("Select Source Drive: ")
+  term.write("Select Source Drive:   ")
   local x1,y1 = term.getCursor()
+  x1 = x1-2
   term.write("Select Target Drive: ")
   local x2,y2 = term.getCursor()
 
