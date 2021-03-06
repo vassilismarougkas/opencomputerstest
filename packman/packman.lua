@@ -99,9 +99,9 @@ local function downloadPackage()
     if wipe then
         shell.execute("rm -r "..export.."*")
     end
-    download(dpath, "/packman/packs/"..package..".tar")
+    download(dpath..package..".tar", "/packman/packs/"..package..".tar")
     if extract then
-        shell.execute("tar -xf "..dpath.." "..export)
+        shell.execute("tar -xf "..dpath..package..".tar".." "..export)
     end
 end
 
