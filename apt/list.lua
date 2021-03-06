@@ -8,7 +8,7 @@ return {
     ["git"] = {["location"] = "/libs/git.lua", ["save"] = "/lib/", ["name"] = "git.lua", ["version"] = 1.0, ["hide"] = true},
     ["bundle"] = {["location"] = "/apt/programs/bundle.lua", ["save"] = "/etc/rc.d/", ["name"] = "bundle.lua"},
     ["cutils"] = {["location"] = "/apt/libraries/cutils.lua", ["save"] = "/lib/", ["name"] = "cutils.lua", ["version"] = 1.1},
-    ["packman"] = {["location"] = "/packman/packman.lua", ["save"] = "/bin/", ["name"] = "packman.lua", ["dependencies"] = {"tar", "cutils"}}
+    ["packman"] = {["location"] = "/packman/packman.lua", ["save"] = "/bin/", ["name"] = "packman.lua", ["dependencies"] = {"tar", "cutils"},["version"] = 1.1}
 }
 
 -- default values:

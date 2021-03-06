@@ -66,6 +66,7 @@ local function downloadPackage()
                 if extract then
                     local tempdownload = "/temp/packman/"
                     download(tempdownload, "/packman/packs/"..package)
+                    shell.execute("tar -xf "..tempdownload.." export")
                 end
             end
         end
@@ -76,8 +77,9 @@ local function downloadPackage()
                 shell.execute("rm -r "..export.."*")
             end
             if extract then
-                local tempdownload = "/temp/packman/"
+                local tempdownload = "/temp/packman/"..package..".tar"
                 download(tempdownload, "/packman/packs/"..package)
+                shell.execute("tar -xf "..tempdownload.." export")
             end
         end
     end
