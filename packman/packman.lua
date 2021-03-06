@@ -97,6 +97,20 @@ end
 if #tArgs == 2 then
     if string.sub(tArgs[1],1,1) == "-" then
         setSettings()
+        package = tArgs[2]
+        downloadPackage()
+    else 
+        printUsage()
+        return nil
+    end
+end
+
+if #tArgs == 3 then
+    if string.sub(tArgs[1],1,1) == "-" then
+        setSettings()
+        package = tArgs[2]
+        export = tArgs[3] or nil
+        downloadPackage()
     else 
         printUsage()
         return nil
