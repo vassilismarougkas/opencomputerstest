@@ -15,7 +15,7 @@ if not filesystem.exists("/temp/packman") then
 end
 
 local function printUsage()
-local usageString = [[
+    local usageString = [[
 packman usage:
     packman -fdwx <pack name> [export folder/drive name]
     -f -> export on folder
@@ -26,6 +26,7 @@ packman usage:
 Note: there is no list function. You need to go to the github page in order to find
       the packs
 ]]
+    print(usageString)
 end
 
 
