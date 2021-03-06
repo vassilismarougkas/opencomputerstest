@@ -51,7 +51,7 @@ local function setSettings()
     end
 end
 
-local function downloadPackage()
+local function downloadPackageOld()
     if package == nil then
         printUsage()
         return nil
@@ -59,16 +59,14 @@ local function downloadPackage()
     if not extract then
         if export == nil then
             export = shell.getWorkingDirectory()
-            if wipe then
-                if wipe then
-                    shell.execute("rm -r "..export.."*")
-                end
-                if extract then
-                    local tempdownload = "/temp/packman/"
-                    download(tempdownload, "/packman/packs/"..package)
-                    shell.execute("tar -xf "..tempdownload.." export")
-                end
-            end
+        end
+        if wipe then
+            shell.execute("rm -r "..export.."*")
+        end
+        if extract then
+            local tempdownload = "/temp/packman/"..package..".tar"
+            download(tempdownload, "/packman/packs/"..package..".tar")
+            shell.execute("tar -xf "..tempdownload.." export")
         end
         if drive then
             local drivec = cutils.findComponent(export)
@@ -78,10 +76,32 @@ local function downloadPackage()
             end
             if extract then
                 local tempdownload = "/temp/packman/"..package..".tar"
-                download(tempdownload, "/packman/packs/"..package)
+                download(tempdownload, "/packman/packs/"..package..".tar")
                 shell.execute("tar -xf "..tempdownload.." export")
             end
         end
+    end
+end
+
+local function downloadPackage()
+    if package == nil then
+        printUsage()
+        return nil
+    end
+    if drive then
+        local drivec = cutils.findComponent(export)
+        export = "/mnt/"..drivec.fsnode.name.."/"
+    end
+    local dpath = export
+    if extract then
+        dpath = "/temp/packman/"
+    end
+    if wipe then
+        shell.execute("rm -r "..export.."*")
+    end
+    download(dpath, "/packman/packs/"..package..".tar")
+    if extract then
+        shell.execute("tar -xf "..dpath.." "..export)
     end
 end
 
