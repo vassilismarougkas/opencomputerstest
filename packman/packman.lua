@@ -92,7 +92,7 @@ local function downloadPackage()
         local drivec = cutils.findComponent(export)
         export = "/mnt/"..drivec.fsnode.name.."/"
     end
-    local dpath = export
+    local dpath = export.."/"
     if extract then
         dpath = "/temp/packman/"
     end
