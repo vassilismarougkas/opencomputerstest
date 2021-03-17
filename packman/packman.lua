@@ -112,6 +112,7 @@ end
 
 if #tArgs == 1 then
     package = tArgs[1]
+    export = shell.getWorkingDirectory()
     downloadPackage()
 end
 
