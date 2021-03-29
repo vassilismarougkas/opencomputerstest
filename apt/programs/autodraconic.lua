@@ -5,15 +5,27 @@ local sides = require("sides")
 local setups = {}
 setups[1] = {
     enabled = true,
-    transposer_id = "",
-    output_transposer_id = "",
-    redstone_id = "",
-    core_side = sides.null, -- chest that transfers to fusion core (from input transposer)
-    infusers_side = sides.null, -- chest that transfers to the infusers (from input transposer)
-    chest_side = sides.null, -- chest that's connected to the interface(s) (from input transposer)
-    infuser_side = sides.null, -- side of the infusion core (from output transposer)
-    output_side = sides.null, -- side of the final chest (from output transposer)
-    redstone_side = sides.null -- side of the fusion core (from the redstone IO)
+    transposer_id = "972a473c-d540-473d-8b57-c8d6462811c3",
+    output_transposer_id = "284082c3-9479-4014-bdf4-c3f4677ee271",
+    redstone_id = "508e4558-8d34-4ddd-8414-04908fa233e2",
+    core_side = sides.up, -- chest that transfers to fusion core (from input transposer)
+    infusers_side = sides.down, -- chest that transfers to the infusers (from input transposer)
+    chest_side = sides.east, -- chest that's connected to the interface(s) (from input transposer)
+    infuser_side = sides.east, -- side of the infusion core (from output transposer)
+    output_side = sides.west, -- side of the final chest (from output transposer)
+    redstone_side = sides.up -- side of the fusion core (from the redstone IO)
+}
+setups[2] = {
+    enabled = true,
+    transposer_id = "ad2dc53f-9ccc-412e-8f71-406a247f51fd",
+    output_transposer_id = "5ad0b02c-4759-4091-a825-bd0df47d54f9",
+    redstone_id = "5be8350c-11d6-4419-94c0-bbceb804c13a",
+    core_side = sides.up, -- chest that transfers to fusion core (from input transposer)
+    infusers_side = sides.down, -- chest that transfers to the infusers (from input transposer)
+    chest_side = sides.west, -- chest that's connected to the interface(s) (from input transposer)
+    infuser_side = sides.east, -- side of the infusion core (from output transposer)
+    output_side = sides.west, -- side of the final chest (from output transposer)
+    redstone_side = sides.up -- side of the fusion core (from the redstone IO)
 }
 
 -- redstone_component = nil
@@ -57,11 +69,11 @@ local function checkCrafting(setup)
                 setup.crafting = false
             else 
                 setup.crafting = true
-                os.sleep(0.2)
+                os.sleep(0.1)
             end
         else
             setup.crafting = true
-            os.sleep(0.2)
+            os.sleep(0.1)
         end
     elseif (x1 ~= nil and x2 == nil) then
         pulse(setup)
@@ -95,7 +107,7 @@ local function startCrafting(setup)
         setup.transposer_component.transferItem(setup.chest_side, setup.infusers_side, 64, i)
     end
     setup.crafting = true
-    os.sleep(0.4)
+    os.sleep(0.1)
     pulse(setup)
 end
 
@@ -111,7 +123,7 @@ local function loop()
     for i=1,#setups do
         if (setups[i].enabled) then
             runSetup(setups[i])
-            os.sleep(0.2)
+            os.sleep(0.1)
         end
     end
 end
