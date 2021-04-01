@@ -23,6 +23,6 @@ print(string.format( "Memory: %d/%d (%.2f%%)", ram_used, ram_total, ram_used_per
 local stored_energy = computer.energy()
 local full_energy = computer.maxEnergy()
 local energy_percentage = 100*stored_energy/full_energy
-print(string.format( "Energy: %d/%d (%.2f%%)", stored_energy, full_energy, energy_percentage))
+print(string.format( "Energy: %d/%d (%.2f%%)", math.floor(stored_energy), math.floor(full_energy), energy_percentage))
 
 shell.setWorkingDirectory(currentDirectory)
